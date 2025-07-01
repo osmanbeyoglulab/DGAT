@@ -9,18 +9,18 @@ import pandas as pd
 from anndata import AnnData
 
 
-def qc_control_cytassist(adata, pdata, min_genes=700, max_genes=None, max_mt_pct=None, remove_isotype=True,
+def qc_control_cytassist(adata, pdata, min_genes=700, max_genes=None, max_mt_pct=35, remove_isotype=True,
                          gene_to_keep_list=None):
     """
     Quality control for CytAssist data.
-    :param adata:
-    :param pdata:
-    :param min_genes:
-    :param max_genes:
-    :param max_mt_pct:
-    :param remove_isotype:
-    :param gene_to_keep_list:
-    :return:
+    :param adata: the AnnData object containing gene expression data.
+    :param pdata: the AnnData object containing protein data.
+    :param min_genes: minimum number of genes per cell to keep.
+    :param max_genes: maximum number of genes per cell to keep.
+    :param max_mt_pct: maximum percentage of mitochondrial genes per cell to keep.
+    :param remove_isotype: whether to remove isotype control proteins.
+    :param gene_to_keep_list: encoding genes to keep in the dataset, if provided. This is for training dataset that we wanted to keep as many encoding genes as possible.
+    :return: adata and pdata after quality control.
     """
     adata.var["mt"] = adata.var_names.str.startswith("MT-")
     sc.pp.calculate_qc_metrics(adata, qc_vars=["mt"], inplace=True)
@@ -56,9 +56,9 @@ def qc_control_cytassist(adata, pdata, min_genes=700, max_genes=None, max_mt_pct
 def normalize(adata, pdata):
     """
     Normalization for both gene expression and protein data.
-    :param adata:
-    :param pdata:
-    :return:
+    :param adata: the AnnData object containing gene expression data.
+    :param pdata: the AnnData object containing protein data.
+    :return: normalized adata and pdata.
     """
     sc.pp.normalize_total(adata, target_sum=1e4)
     sc.pp.log1p(adata)
@@ -72,8 +72,8 @@ def normalize(adata, pdata):
 def clean_protein_names(var_names):
     """
     Clean protein names by replacing hyphens with underscores and parsing the names.
-    :param var_names:
-    :return:
+    :param var_names: a list of protein variable names.
+    :return: a list of cleaned protein names.
     """
     # replace - with _
     name_groups = defaultdict(list)
@@ -101,13 +101,13 @@ def clean_protein_names(var_names):
     return final_names
 
 
-def QC_train_list(adata_list, pdata_list):
+def preprocess_train_list(adata_list, pdata_list):
     """
     Quality control for a list of AnnData objects containing gene expression and protein data.
     Finds common genes and proteins across the datasets, performs QC, and normalizes the data.
-    :param adata_list:
-    :param pdata_list:
-    :return:
+    :param adata_list: a list of AnnData objects containing gene expression data.
+    :param pdata_list: a list of AnnData objects containing protein data.
+    :return: common_gene and common_protein lists after QC.
     """
     gene_list = [set(adata.var_names) for adata in adata_list]
     common_gene = gene_list[0].intersection(*gene_list[1:])
@@ -161,9 +161,9 @@ def QC_train_list(adata_list, pdata_list):
 def fill_genes(test_adata, common_gene):
     """
     Fill missing genes in the test AnnData object with zeros if they are not present in the common gene list.
-    :param test_adata:
-    :param common_gene:
-    :return: adata with filled genes
+    :param test_adata: the AnnData object to be filled with common genes.
+    :param common_gene: a list of common genes to fill in the test_adata.
+    :return: adata with filled genes or the original test_adata if no genes are missing.
     """
     existing_genes = set(test_adata.var_names)
     missing_genes = [gene for gene in common_gene if gene not in test_adata.var_names]
@@ -211,7 +211,7 @@ def fill_genes(test_adata, common_gene):
 def preprocess_ST(adata):
     """
     Quality control and normalization for spatial transcriptomics data. Due to we selected common genes for the training data, we do not filter genes here.
-    :param adata:
+    :param adata: the AnnData object containing spatial transcriptomics data.
     """
     sc.pp.filter_cells(adata, min_genes=700)
     sc.pp.normalize_total(adata, target_sum=1e4)

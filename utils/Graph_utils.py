@@ -8,6 +8,9 @@ from sklearn.decomposition import PCA
 
 
 def build_knn_adj(features, k, apply_pca=False, variance=0.85):
+    """
+    Build a k-nearest neighbors adjacency matrix from the given features.
+    """
     if apply_pca and features.shape[1] > 1500:
         pca = PCA(n_components=variance, svd_solver='full')
         features = pca.fit_transform(features)
@@ -30,12 +33,18 @@ def preprocess_data(adata, pdata_df):
 
 
 def adjacency_to_edge_index(adjacency):
+    """
+    Convert an adjacency matrix to edge index and edge weight tensors.
+    """
     edge_index = adjacency.nonzero(as_tuple=False).t()
     edge_weight = adjacency[edge_index[0], edge_index[1]]
     return edge_index.long(), edge_weight
 
 
 def create_pyg_data(X_mRNA, X_protein, spatial, device='cpu'):
+    """
+    Create a PyTorch Geometric data object from mRNA and protein expression data, along with spatial coordinates.
+    """
     adjacency_spatial = build_knn_adj(spatial, k=6, apply_pca=False)
     adjacency_mRNA = build_knn_adj(X_mRNA, k=10, apply_pca=True, variance=0.85)
     adjacency_protein = build_knn_adj(X_protein, k=10, apply_pca=False)

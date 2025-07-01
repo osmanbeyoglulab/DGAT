@@ -31,6 +31,9 @@ def rmse_loss(pred, target, eps=1e-8):
 
 def train_and_evaluate_fold(train_adata_list, test_adata, train_pdata_list, test_pdata, test_sample_name,
                             processed_data_dir):
+    """
+    Leave one out testing
+    """
     gene_list = [set(adata.var_names) for adata in train_adata_list + [test_adata]]
     common_gene = set.intersection(*gene_list)
     common_gene = sorted(list(common_gene))
@@ -87,12 +90,6 @@ def train_and_evaluate_fold(train_adata_list, test_adata, train_pdata_list, test
     test_losses = []
     test_cors = []
 
-    best_loss = float('inf')
-    patience_counter = 0
-    best_encoder_mRNA = None
-    best_decoder_mRNA = None
-    best_encoder_protein = None
-    best_decoder_protein = None
 
     D = sum(p.numel() for p in encoder_mRNA.parameters()) + \
         sum(p.numel() for p in decoder_mRNA.parameters()) + \
@@ -391,12 +388,7 @@ def train(train_adata_list, train_pdata_list, processed_data_dir):
     eval_interval = 1
     train_losses = []
 
-    best_loss = float('inf')
-    patience_counter = 0
-    best_encoder_mRNA = None
-    best_decoder_mRNA = None
-    best_encoder_protein = None
-    best_decoder_protein = None
+
 
     D = sum(p.numel() for p in encoder_mRNA.parameters()) + \
         sum(p.numel() for p in decoder_mRNA.parameters()) + \

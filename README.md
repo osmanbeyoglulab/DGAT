@@ -23,7 +23,7 @@ You can install the required packages using pip:
     pip install -r requirements_CPU.txt
     ```
 
-****%%
+
 
 ## Usage
 

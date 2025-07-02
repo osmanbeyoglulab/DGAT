@@ -33,24 +33,3 @@ You can install the required packages using pip:
 
 ### Prediction
 To run the prediction, you can follow the [Predict_ST](Predict_ST.ipynb) notebook. This notebook will guide you through the process of using the pre-trained DGAT model to predict gene expression from Spatial Transcriptomics data. Please make sure you have the pre-trained model or the model you trained in the previous step. The ST datasets should also be placed in the `ST_data` folder.
-
-## Key functions
-
-### Train
-
-**preprocess_train_list(adata_list, pdata_list)**
-: This function performs quality control and normalization on the training datasets, finally it will return **common_genes** and **common_proteins** for you to check. **adata_list** should be the list of ST datasets, and **pdata_list** should be the list of protein datasets (all the datasets should be in the form of `anndata.AnnData`).
-
-**train(train_adata_list, train_pdata_list, processed_data_dir)**
-: This function trains the DGAT model using the preprocessed training datasets. It takes in the list of processed ST datasets and protein datasets, and the directory to save the processed graph data (for more efficient reproduction).
-
-### Predict
-
-**preprocess_ST(adata)**
-: This function performs quality control and normalization on a Spatial Transcriptomics dataset in the form of `anndata.AnnData`. It returns a preprocessed one.
-
-**fill_genes(test_adata, common_gene)**
-: This function fills in the missing genes in the test dataset with zeros, **ensuring that the test dataset has the same genes as the training dataset**. It takes in the test dataset and the list of common genes.
-
-**protein_predict(adata, common_gene, common_protein, model_save_dir, pyg_data_dir)**
-: This function predicts the protein expression from the Spatial Transcriptomics dataset using the pre-trained DGAT model located in `model_save_dir`. It takes in the preprocessed test dataset, the list of common genes, the list of common proteins, and the directory for saving the graph data. It returns an `anndata.AnnData` object, in which the adata.X is the predicted protein expression, and the adata.var_names are the common proteins.

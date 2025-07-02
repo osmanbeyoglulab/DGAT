@@ -1,5 +1,18 @@
 ## Introduction
-DGAT is a deep learning model for predicting protein expression from Spatial Transcriptomics (ST) data. It uses a graph attention network to learn the relationships between genes and proteins, and then predicts protein expression from ST data.
+Spatial transcriptomics (ST) technologies provide genome-wide mRNA profiles in tissue context 
+but lack direct protein-level measurements, which are critical for interpreting cellular function 
+and microenvironmental organization. We present DGAT (Dual-Graph Attention Network), a 
+deep learning framework that imputes spatial protein expression from transcriptomics-only ST 
+data by learning RNA–protein relationships from spatial CITE-seq datasets. DGAT constructs 
+heterogeneous graphs integrating transcriptomic, proteomic, and spatial information, encoded 
+using graph attention networks. Task-specific decoders reconstruct mRNA and predict protein 
+abundance from a shared latent representation. Benchmarking across public and in-house 
+datasets—including tonsil, breast cancer, glioblastoma, and malignant mesothelioma—
+demonstrates that DGAT outperforms existing methods in protein imputation accuracy. Applied 
+to ST datasets lacking protein measurements, DGAT reveals spatially distinct cell states, 
+immune phenotypes, and tissue architectures not evident from transcriptomics alone. DGAT 
+enables proteome-level insights from transcriptomics-only data, bridging a critical gap in spatial 
+omics and enhancing functional interpretation in cancer, immunology, and precision medicine.
 
 ![img.png](imgs/img.png)
 ## Data 

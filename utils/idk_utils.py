@@ -66,7 +66,7 @@ def leiden_plot(
             show=False,
             title="Gernimal Centers"
         )
-            # 画边缘线
+            # Draw border lines
         if points is not None and edges is not None:
             for ii, jj in edges:
                 axes[0].plot(points[[ii, jj], 0], points[[ii, jj], 1], 'k-', linewidth=1)
@@ -88,7 +88,7 @@ def leiden_plot(
             title="Pathology"
         )
 
-    # 第二张子图：Leiden + 自定义处理
+    # Second subplot: Leiden + custom processing
     sc.pl.spatial(
         adata,
         color='leiden',
@@ -100,7 +100,7 @@ def leiden_plot(
         title=title,
     )
 
-    # 画边缘线
+    #  Draw border lines
     if points is not None and edges is not None:
         for ii, jj in edges:
             axes[1].plot(points[[ii, jj], 0], points[[ii, jj], 1], 'k-', linewidth=1)

@@ -7,13 +7,8 @@ DGAT is a deep learning model for predicting protein expression from Spatial Tra
 ## Data 
 **The training datasets for DGAT model, pre-trained model and Spatial Transcriptomics for predictions can be downloaded [here](https://drive.google.com/drive/folders/1M9gIOFjK4wBk7DEj9MrwAlV8OHEgS2BA?usp=sharing).**
 
-Training datasets include 2 Tonsil samples, 1 GBM sample, 1 Breast sample, and 2 Mesothelioma samples.
-
-ST datasets include 5 samples, which are 2 Breast samples, a Melanoma sample, a Ovarian sample, and a Prostate sample.
-
-
 ## Prerequisites
-The code runs on Python 3.10 and above.
+The code runs on Python 3.11 and above.
 
 Please find the requirements.txt file in this repository for the list of required packages. You can install them using pip:
 

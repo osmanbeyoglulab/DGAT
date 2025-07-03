@@ -42,7 +42,15 @@ You can install the required packages using pip:
 
 ### Train
 
-[Training notebook](Demo_Train.ipynb) will lead you through the training process of DGAT model. Before running the notebook, please make sure you have downloaded the training datasets and put them in the `DGAT_datasets` folder. Detailed instructions are provided in the notebook.
+[Demo_Train_1](Demo_Train_1.ipynb) will lead you through the training process of DGAT model on one sample. Before running the notebook, please make sure you have downloaded the training datasets and put them in the `DGAT_datasets` folder. Detailed instructions are provided in the notebook.
 
-### Prediction
-To run the prediction, you can follow the [Predict_ST](Predict_ST.ipynb) notebook. This notebook will guide you through the process of using the pre-trained DGAT model to predict gene expression from Spatial Transcriptomics data. Please make sure you have the pre-trained model or the model you trained in the previous step. The ST datasets should also be placed in the `ST_data` folder.
+### Predict
+
+To run the prediction demo, you can follow the [Demo_Predict_2](Demo_Predict_2.ipynb) notebook. This notebook will guide you through the process of using the pre-trained DGAT model from [Demo_Train_1](Demo_Train_1.ipynb) to predict gene expression from Spatial Transcriptomics data and the downstream analysis.
+
+
+### Further Explore
+
+For further exploring, such as training on multiple samples from our datasets or yours, please follow the [Train_all](Train_all.ipynb) notebook.
+
+[Predict_ST](Predict_ST.ipynb) notebook will guide you through the process of predicting protein expressions from all of our ST datasets using the pre-trained DGAT model.

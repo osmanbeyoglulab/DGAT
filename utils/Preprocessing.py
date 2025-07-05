@@ -101,7 +101,7 @@ def clean_protein_names(var_names):
     return final_names
 
 
-def preprocess_train_list(adata_list, pdata_list):
+def preprocess_train_list(adata_list, pdata_list, save_common = True):
     """
     Quality control for a list of AnnData objects containing gene expression and protein data.
     Finds common genes and proteins across the datasets, performs QC, and normalizes the data.
@@ -141,18 +141,18 @@ def preprocess_train_list(adata_list, pdata_list):
     common_protein = protein_list[0].intersection(*protein_list)
     common_protein = sorted(list(common_protein))
     print(f"Common proteins after QC: {len(common_protein)}")
+    if save_common:
+        g_filename = f"common_gene_{len(common_gene)}.txt"
+        with open(g_filename, "w") as f:
+            for gene in common_gene:
+                f.write(gene + "\n")
+        print(f"Common gene names saved to {g_filename}")
 
-    g_filename = f"common_gene_{len(common_gene)}.txt"
-    with open(g_filename, "w") as f:
-        for gene in common_gene:
-            f.write(gene + "\n")
-    print(f"Common gene names saved to {g_filename}")
-
-    p_filename = f"common_protein_{len(common_protein)}.txt"
-    with open(p_filename, "w") as f:
-        for protein in common_protein:
-            f.write(protein + "\n")
-    print(f"Common protein names saved to {p_filename}")
+        p_filename = f"common_protein_{len(common_protein)}.txt"
+        with open(p_filename, "w") as f:
+            for protein in common_protein:
+                f.write(protein + "\n")
+        print(f"Common protein names saved to {p_filename}")
 
     return common_gene, common_protein
 

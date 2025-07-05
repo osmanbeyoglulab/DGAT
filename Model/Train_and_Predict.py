@@ -633,18 +633,18 @@ def test_data_spearman_only(
     return avg_loss, avg_spearman_Pro
 
 
-def get_activity(adata, key='tfa_stan', protein_names=None):
+def get_activity(adata, key='', protein_names=None):
     s = key[:2]
-    adata_tfa = AnnData(
+    adata_pt = AnnData(
         X=adata.obsm[key],
         obs=adata.obs,
         obsm={name: obj for (name, obj) in adata.obsm.items() if s not in name},
         layers={name: obj for (name, obj) in adata.obsm.items() if s in name},
     )
     if protein_names is not None:
-        adata_tfa.var_names = protein_names
-    adata_tfa.uns = adata.uns
-    return adata_tfa
+        adata_pt.var_names = protein_names
+    adata_pt.uns = adata.uns
+    return adata_pt
 
 
 def predict_data(ae_mRNA, decoder_protein, test_adata, predict_loader, device):

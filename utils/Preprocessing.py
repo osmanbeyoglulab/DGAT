@@ -142,13 +142,13 @@ def preprocess_train_list(adata_list, pdata_list, save_common = True):
     common_protein = sorted(list(common_protein))
     print(f"Common proteins after QC: {len(common_protein)}")
     if save_common:
-        g_filename = f"common_gene_{len(common_gene)}.txt"
+        g_filename = f"./resources/common_gene_{len(common_gene)}.txt"
         with open(g_filename, "w") as f:
             for gene in common_gene:
                 f.write(gene + "\n")
         print(f"Common gene names saved to {g_filename}")
 
-        p_filename = f"common_protein_{len(common_protein)}.txt"
+        p_filename = f"./resources/common_protein_{len(common_protein)}.txt"
         with open(p_filename, "w") as f:
             for protein in common_protein:
                 f.write(protein + "\n")

@@ -9,7 +9,7 @@ RELSIZE = 0.8
 var = 'diff_zscore_global'
 
 # 1. 读入数据，计算 Score
-data = read.csv('./data/dotplot_resources/Prostate_scale.csv', row.names = 1)
+data = read.csv('./results/dotplot_resources/Prostate_scale.csv', row.names = 1)
 data$Score = pmax(pmin(data[[var]], 1.75), -1.75)
 
 

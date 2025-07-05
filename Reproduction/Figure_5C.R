@@ -8,7 +8,7 @@ FONTSIZE = 18
 RELSIZE = 0.8
 var = 'diff_zscore_global'
 
-data = read.csv('./data/dotplot_resources/Melanoma_scale.csv', row.names = 1)
+data = read.csv('./results/dotplot_resources/Melanoma_scale.csv', row.names = 1)
 data$Score = pmax(pmin(data[[var]], 1.75), -1.75)
 data$Pathology = factor(data$Pathology,
                         levels = c('Lymphoid','Melanoma','Stroma'))

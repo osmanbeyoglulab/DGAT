@@ -1,12 +1,12 @@
 #/Users/whyyy/Documents/spatial/protein_correlation_GAT.csv /Users/whyyy/Documents/spatial/protein_correlation_ATT.csv /Users/whyyy/Documents/spatial/protein_correlation_CTP.csv /Users/whyyy/Documents/spatial/protein_correlation_sciPENN.csv /Users/whyyy/Documents/spatial/protein_correlation_Seurat.csv
 file_list = [
 #'/Users/whyyy/Documents/spatial/Protein_Corr/protein_correlation_FA_DGAT-2.csv',
-    './data/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_DGAT.csv',
-    './data/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_CTP-net.csv',
-    './data/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_scLinear.csv',
-    './data/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_sciPENN.csv',
-    './data/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_Seurat.csv',
-    './data/Protein_Corr_Leave_One_Out/Spearman_mRNA_protein_corr.csv'
+    './results/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_DGAT.csv',
+    './results/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_CTP-net.csv',
+    './results/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_scLinear.csv',
+    './results/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_sciPENN.csv',
+    './results/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_Seurat.csv',
+    './results/Protein_Corr_Leave_One_Out/Spearman_mRNA_protein_corr.csv'
 ]
 method_names = {
     'Spearman_Protein_corr_DGAT': 'DGAT',

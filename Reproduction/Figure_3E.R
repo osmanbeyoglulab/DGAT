@@ -8,7 +8,7 @@ FONTSIZE = 18
 RELSIZE = 0.8
 var = 'signed_p'
 
-data = read.csv('./data/dotplot_resources/Tonsil_LN_signed.csv', row.names = 1)
+data = read.csv('./results/dotplot_resources/Tonsil_LN_signed.csv', row.names = 1)
 data$Score = pmax(pmin(data[[var]], 300), -300)
 
 data$Pathology <- factor(

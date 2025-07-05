@@ -2,12 +2,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 files = {
-    "DGAT": "./data/ARS_results/DGAT_Spearman.csv",
-    "scLinear": "./data/ARS_results/scLinear_Spearman.csv",
-    "CTP-net": "./data/ARS_results/CTP-net_Spearman.csv",
-    "mRNA": "./data/ARS_results/mRNA_Spearman.csv",
-    "sciPENN": "./data/ARS_results/sciPENN_Spearman.csv",
-    "Seurat": "./data/ARS_results/Seurat_Spearman.csv"
+    "DGAT": "./results/ARS_results/DGAT_Spearman.csv",
+    "scLinear": "./results/ARS_results/scLinear_Spearman.csv",
+    "CTP-net": "./results/ARS_results/CTP-net_Spearman.csv",
+    "mRNA": "./results/ARS_results/mRNA_Spearman.csv",
+    "sciPENN": "./results/ARS_results/sciPENN_Spearman.csv",
+    "Seurat": "./results/ARS_results/Seurat_Spearman.csv"
 }
 
 dfs = []

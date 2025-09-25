@@ -6,7 +6,10 @@ file_list = [
     './results/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_scLinear.csv',
     './results/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_sciPENN.csv',
     './results/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_Seurat.csv',
-    './results/Protein_Corr_Leave_One_Out/Spearman_mRNA_protein_corr.csv'
+'./results/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_STREAK.csv',
+    './results/Protein_Corr_Leave_One_Out/Spearman_mRNA_protein_corr.csv',
+   # './results/Protein_Corr_Leave_One_Out/Spearman_Protein_corr_STREAK.csv'
+
 ]
 method_names = {
     'Spearman_Protein_corr_DGAT': 'DGAT',
@@ -14,7 +17,9 @@ method_names = {
     'Spearman_Protein_corr_CTP-net': 'CTP-net',
      'Spearman_Protein_corr_sciPENN': 'sciPENN',
    'Spearman_Protein_corr_Seurat': 'Seurat v4 (PCA)',
+'Spearman_Protein_corr_STREAK': 'STREAK',
      'Spearman_mRNA_protein_corr': 'mRNA-Protein',
+
 }
 
 def plot_proteinwise_boxplot(file_list, method_names, plot_sample_order=None):
@@ -58,7 +63,7 @@ def plot_proteinwise_boxplot(file_list, method_names, plot_sample_order=None):
     if plot_sample_order is None:
         plot_sample_order = samples
     methods = list(data_dict.keys())
-    puor_colors = ["#8073ac", "#b35806", "#b2abd2", "#e08214", "#fdb863", "#fee0b6"]
+    puor_colors = ["#542788", "#b35806", "#998ec3", "#f1a340", "#d8daeb", "#fee0b6","#f7f7f7"]
     colors = puor_colors[:len(methods)]
     method_colors = {m: colors[i] for i, m in enumerate(methods)}
 

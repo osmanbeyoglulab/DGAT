@@ -59,7 +59,7 @@ To run the prediction demo, you can follow the [Demo2_Predict](Demo2_Predict.ipy
 
 For further exploring, such as training on multiple samples from our datasets or yours, please follow the [Pretrain_DGAT](Pretrain_DGAT.ipynb) notebook.
 
-[Demo3_Predict_ST](Demo3_Predict_ST.ipynb) notebook will guide you through the process of predicting protein expressions from all of our ST datasets using the pre-trained DGAT model.
+[Demo3_Predict_ST](Demo3_Predict_ST.ipynb) notebook will guide you through the process of predicting protein expressions on ST datasets using the pre-trained DGAT model.
 
 ## Citation
 <!-- https://www.biorxiv.org/content/10.1101/2025.07.05.662121v1 -->

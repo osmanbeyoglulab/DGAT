@@ -44,7 +44,7 @@ You can install the required packages using pip:
 
 
 
-## 10-minute Demo
+## 10-minute Quick Start
 
 ### Train
 
